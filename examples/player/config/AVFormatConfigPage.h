@@ -23,9 +23,11 @@
 #include "ConfigPageBase.h"
 #include <QtCore/QVariant>
 
+QT_BEGIN_NAMESPACE
 class QCheckBox;
 class QSpinBox;
 class QLineEdit;
+QT_END_NAMESPACE
 class AVFormatConfigPage : public ConfigPageBase
 {
     Q_OBJECT
@@ -36,6 +38,7 @@ protected:
     virtual void applyToUi();
     virtual void applyFromUi();
 private:
+    QCheckBox* m_on;
     QCheckBox *m_direct;
     QSpinBox *m_probeSize;
     QSpinBox *m_analyzeDuration;

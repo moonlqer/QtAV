@@ -45,11 +45,6 @@ Frame &Frame::operator =(const Frame &other)
     return *this;
 }
 
-int Frame::allocate()
-{
-    return 0;
-}
-
 int Frame::bytesPerLine(int plane) const
 {
     if (plane < 0 || plane >= planeCount()) {
@@ -82,7 +77,7 @@ uchar* Frame::bits(int plane)
     return d_func()->planes[plane];
 }
 
-const uchar* Frame::bits(int plane) const
+const uchar* Frame::constBits(int plane) const
 {
     if (plane < 0 || plane >= planeCount()) {
         qWarning("Invalid plane! Valid range is [0, %d)", planeCount());

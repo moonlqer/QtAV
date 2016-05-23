@@ -1,6 +1,6 @@
 /******************************************************************************
-    QtAV:  Media play library based on Qt and FFmpeg
-    Copyright (C) 2012-2015 Wang Bin <wbsecg1@gmail.com>
+    QtAV:  Multimedia framework based on Qt and FFmpeg
+    Copyright (C) 2012-2016 Wang Bin <wbsecg1@gmail.com>
 
 *   This file is part of QtAV
 
@@ -46,10 +46,11 @@ public:
     void setContrast(int val);
     void setSaturation(int val);
     void setEQ(int b, int c, int s);
-    void scheduleFrameDrop(bool value = true);
 
 public Q_SLOTS:
     void addCaptureTask();
+    void clearRenderers();
+
 protected:
     void applyFilters(VideoFrame& frame);
     // deliver video frame to video renderers. frame may be converted to a suitable format for renderer

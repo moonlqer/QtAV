@@ -3,6 +3,7 @@ import "utils.js" as Utils
 
 Rectangle {
     id: root
+    layer.enabled: true
     property string selected: ""
     property string selectedUrl
     property int selectedX: 0
@@ -33,7 +34,36 @@ Rectangle {
         contentModel.append({name: qsTr("Video codec"), url: "VideoCodec.qml" })
         contentModel.append({name: qsTr("Subtitle"), url: "SubtitlePage.qml" })
         contentModel.append({name: qsTr("Audio"), url: "AudioPage.qml" })
-        contentModel.append({name: qsTr("Preview"), url: "PreviewPage.qml" })
+        contentModel.append({name: qsTr("Misc"), url: "MiscPage.qml" })
         contentModel.append({name: qsTr("About"), url: "About.qml" })
     }
+
+    states: [
+        State {
+            name: "show"
+            PropertyChanges {
+                target: root
+                opacity: 0.9
+                anchors.rightMargin: 0
+            }
+        },
+        State {
+            name: "hide"
+            PropertyChanges {
+                target: root
+                opacity: 0
+                anchors.rightMargin: -root.width
+            }
+        }
+    ]
+    transitions: [
+        Transition {
+            from: "*"; to: "*"
+            PropertyAnimation {
+                properties: "opacity,anchors.rightMargin"
+                easing.type: Easing.OutQuart
+                duration: 500
+            }
+        }
+    ]
 }
